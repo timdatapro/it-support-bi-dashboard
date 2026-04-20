@@ -126,7 +126,6 @@ A heat map matrix (Hour Bin x Weekday) with a green gradient immediately reveals
 
 ## Repository Structure
 
-​```
 it-support-bi-dashboard/
 │
 ├── README.md                     # Project overview and documentation
@@ -138,7 +137,7 @@ it-support-bi-dashboard/
 ├── load_data.py                  # Python ETL pipeline (pandas + psycopg2)
 ├── validation_queries.sql        # Senior-level SQL validation and analytics queries
 └── support_tickets_en.xlsx       # Source dataset (2,672 tickets)
-​```
+​
 ---
 
 ## Data Model
