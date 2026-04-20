@@ -5,7 +5,7 @@
 ## Overview
 
 This project showcases an end-to-end **IT Support Analytics Dashboard** built for an EdTech company.  
-The goal is to give IT managers and team leads a single place to monitor **ticket volume, SLA compliance, first-contact resolution rate, and agent performance** — and identify bottlenecks before they escalate.
+The goal is to give IT managers and team leads a single place to monitor **ticket volume, SLA compliance, first-contact resolution rate, and agent performance** and identify bottlenecks before they escalate.
 
 The project covers the **full data pipeline**: from synthetic data generation and PostgreSQL schema design, through Python ETL, DAX modeling in Power BI, to an interactive multi-block dashboard with conditional formatting, bookmarks, and slicers.
 
