@@ -1,14 +1,14 @@
-# DAX Measures Reference — IT Support Dashboard
+# DAX Measures Reference : IT Support Dashboard
 
 All 28 measures live in a dedicated `_DAX` table, organized into 6 subfolders. This keeps them visually separated from data tables in the Fields pane and makes the model easier to navigate.
 
 ---
 
-## Quick Setup — Tabular Editor 2
+## Quick Setup : Tabular Editor 2
 
 The fastest way to create all measures at once is via a C# script in Tabular Editor 2.
 
-### Step 1 — Create the _DAX table
+### Step 1 : Create the _DAX table
 
 Open Tabular Editor 2, connect to your Power BI model, paste this script and run it:
 
@@ -24,7 +24,7 @@ dax.IsHidden = true;
 Output("_DAX table ready.");
 ```
 
-### Step 2 — Create all measures
+### Step 2 : Create all measures
 
 Paste and run the script below. It creates all 28 measures with correct folder assignments and format strings:
 
@@ -160,13 +160,13 @@ addMeasure("Project Avg Resolution Hours",
 Output("All 28 measures created successfully.");
 ```
 
-> **Note:** In Tabular Editor 2, string interpolation (`$"..."`) is not supported. Use concatenation (`+`) instead. The `DataType` property is read-only — use `FormatString` to control number formatting.
+> **Note:** In Tabular Editor 2, string interpolation (`$"..."`) is not supported. Use concatenation (`+`) instead. The `DataType` property is read-only : use `FormatString` to control number formatting.
 
 ---
 
 ## Measures Reference
 
-### Folder 1 — Volume
+### Folder 1 : Volume
 
 | Measure | Description | Format |
 |---|---|---|
@@ -201,12 +201,12 @@ CALCULATE(
 
 ---
 
-### Folder 2 — Resolution Time
+### Folder 2 : Resolution Time
 
 | Measure | Description | Format |
 |---|---|---|
 | `Avg Resolution Hours` | Average hours from created_at to closed_at for Resolved tickets | `0.0` |
-| `Median Resolution Hours` | Median of the same — less sensitive to outliers | `0.0` |
+| `Median Resolution Hours` | Median of the same : less sensitive to outliers | `0.0` |
 
 > Both measures filter to `status = "Resolved"` and exclude NULL or zero `hours` values. Active tickets have NULL hours and are automatically excluded.
 
@@ -240,13 +240,13 @@ CALCULATE(
 
 ---
 
-### Folder 3 — SLA
+### Folder 3 : SLA
 
 | Measure | Description | Format |
 |---|---|---|
 | `SLA Compliance %` | % of closed tickets resolved within SLA target hours | `0.0%` |
 | `SLA Target` | Constant reference value (0.70) for chart reference lines | `0%` |
-| `SLA vs Target` | Difference between SLA % and 0.70 — positive is good | `+0.0%;-0.0%;0.0%` |
+| `SLA vs Target` | Difference between SLA % and 0.70 : positive is good | `+0.0%;-0.0%;0.0%` |
 | `SLA Breached Tickets` | Count of tickets where is_sla_breached = TRUE | `0` |
 
 > **Key logic:** `is_sla_breached` is NULL for active tickets (Open/In Progress/Waiting for Approval). The measure uses `NOT ISBLANK()` to exclude these rows from both numerator and denominator, so only closed tickets count toward SLA %.
@@ -268,7 +268,7 @@ SLA Target = 0.70
 
 ---
 
-### Folder 4 — FCR
+### Folder 4 : FCR
 
 | Measure | Description | Format |
 |---|---|---|
@@ -293,21 +293,21 @@ FCR Target = 0.60
 
 ---
 
-### Folder 5 — Agent Performance
+### Folder 5 : Agent Performance
 
 | Measure | Description | Format |
 |---|---|---|
 | `Agent Resolved Tickets` | Resolved ticket count, used in agent table | `0` |
 | `Agent Active Tickets` | Active ticket count, used in agent table | `0` |
-| `Agent SLA %` | SLA compliance per agent — same logic as global SLA % | `0.0%` |
-| `Agent FCR %` | FCR rate per agent — same logic as global FCR % | `0.0%` |
+| `Agent SLA %` | SLA compliance per agent : same logic as global SLA % | `0.0%` |
+| `Agent FCR %` | FCR rate per agent : same logic as global FCR % | `0.0%` |
 | `Agent Avg Resolution Hours` | Average resolution time per agent | `0.0` |
 
 > These measures are functionally identical to the global measures but are kept in a separate folder to make the Fields pane cleaner when building agent-level visuals.
 
 ---
 
-### Folder 6 — Project Impact
+### Folder 6 : Project Impact
 
 | Measure | Description | Format |
 |---|---|---|
@@ -339,12 +339,12 @@ These columns live in `public support_tickets`, not in `_DAX`.
 
 | Column | Purpose | Notes |
 |---|---|---|
-| `created_date` | Strips time from `created_at` — used for Calendar relationship | Must be Date type |
-| `Weekday No` | Integer 1-5 (Mon-Fri), hidden — used to sort `Weekday` | BLANK for weekends |
-| `Weekday` | Mon/Tue/Wed/Thu/Fri label — sorted by `Weekday No` | BLANK for weekends |
+| `created_date` | Strips time from `created_at` : used for Calendar relationship | Must be Date type |
+| `Weekday No` | Integer 1-5 (Mon-Fri), hidden : used to sort `Weekday` | BLANK for weekends |
+| `Weekday` | Mon/Tue/Wed/Thu/Fri label : sorted by `Weekday No` | BLANK for weekends |
 | `Hour Bin` | Time window label (9-11 AM, 12-2 PM, etc.) | Used in heat map rows |
-| `Hour Bin Sort` | Integer 1-5 — used to sort `Hour Bin` correctly | Hidden |
-| `Priority Sort` | Prefixed text (1-Critical, 2-High, etc.) — forces correct bar chart order | Replaces alphabetical sort |
+| `Hour Bin Sort` | Integer 1-5 : used to sort `Hour Bin` correctly | Hidden |
+| `Priority Sort` | Prefixed text (1-Critical, 2-High, etc.) : forces correct bar chart order | Replaces alphabetical sort |
 | `Status Group` | Groups Open/In Progress/Waiting as "Active", rest as "Closed" | Used for high-level filtering |
 
 ```dax
@@ -378,9 +378,10 @@ SWITCH('public support_tickets'[priority_id],
 
 ## Known Gotchas
 
-- **New Card visual abbreviates numbers** — use Card (classic) for exact figures like "2,672"
-- **Tabular Editor 2 does not support `ContainsName`** — use `FirstOrDefault(m => m.Name == name)` instead
-- **`Move()` does not exist in TE2** — recreate measures in the target table via `AddMeasure()` then delete originals
-- **`is_sla_breached` is NULL for active tickets** — always use `NOT ISBLANK()` as the denominator filter for SLA %, never just count FALSE rows
-- **Calendar LocalDateTables** — disable Auto date/time in Power BI Options before saving, or TE2 will throw a save conflict error
-- **`MonthSort = YEAR * 100 + MONTH`** — always needed for correct chronological axis ordering when Month is a text label like "Jul 2025"
+- **New Card visual abbreviates numbers** : use Card (classic) for exact figures like "2,672"
+- **Tabular Editor 2 does not support `ContainsName`** : use `FirstOrDefault(m => m.Name == name)` instead
+- **`Move()` does not exist in TE2** : recreate measures in the target table via `AddMeasure()` then delete originals
+- **`is_sla_breached` is NULL for active tickets** : always use `NOT ISBLANK()` as the denominator filter for SLA %, never just count FALSE rows
+- **Calendar LocalDateTables** : disable Auto date/time in Power BI Options before saving, or TE2 will throw a save conflict error
+- **`MonthSort = YEAR * 100 + MONTH`** : always needed for correct chronological axis ordering when Month is a text label like "Jul 2025"
+****
