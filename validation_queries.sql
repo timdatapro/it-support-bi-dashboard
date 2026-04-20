@@ -2,7 +2,6 @@
 -- IT Support Dashboard -- Validation & Analytics Queries
 -- Database: PostgreSQL (edtech_support)
 -- Table: public.support_tickets
--- Level: Senior Analyst
 -- =============================================================
 
 
