@@ -66,9 +66,9 @@ James Carter handles the highest volume on the team at 417 tickets with 4 curren
 
 ---
 
-## Design Decisions — Addressing Instructor Feedback
+## Design Decisions
 
-During the course review session, the instructor provided detailed feedback on an earlier MVP version of this dashboard. The final version addresses every point:
+The final version addresses every point:
 
 **1. "Active tickets card is useful — but add a breakdown by status too"**
 The KPI card shows the combined active total (21). The active tickets table below is filtered exclusively to Open / In Progress / Waiting for Approval statuses and sorted by creation date, giving team leads an immediate action list without mixing in resolved or canceled tickets.
