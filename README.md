@@ -15,7 +15,7 @@ The project covers the **full data pipeline**: from synthetic data generation an
 
 ## Dashboard Preview
 
-![IT Support Dashboard](dashboard/preview.png)
+![IT Support Dashboard](https://i.imgur.com/xsHo67m.png)
 
 ---
 
