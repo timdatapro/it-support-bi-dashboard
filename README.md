@@ -1,4 +1,4 @@
-# IT Support Dashboard — EdTech Company
+# IT Support Dashboard (EdTech Company)
 
 📊 **Power BI Project** | Business Intelligence | IT Operations | EdTech Industry
 
