@@ -126,19 +126,19 @@ A heat map matrix (Hour Bin x Weekday) with a green gradient immediately reveals
 
 ## Repository Structure
 
-```
+​```
 it-support-bi-dashboard/
 │
 ├── README.md                     # Project overview and documentation
 ├── DAX_MEASURES.md               # All 28 DAX measures with descriptions and TE2 setup script
 ├── LICENSE
 │
+├── EdTech_Support.pbix           # Power BI dashboard file
 ├── create_schema.sql             # PostgreSQL table DDL, indexes, and constraints
 ├── load_data.py                  # Python ETL pipeline (pandas + psycopg2)
 ├── validation_queries.sql        # Senior-level SQL validation and analytics queries
 └── support_tickets_en.xlsx       # Source dataset (2,672 tickets)
-```
-
+​```
 ---
 
 ## Data Model
