@@ -137,7 +137,8 @@ it-support-bi-dashboard/
 ├── load_data.py                  # Python ETL pipeline (pandas + psycopg2)
 ├── validation_queries.sql        # Senior-level SQL validation and analytics queries
 └── support_tickets_en.xlsx       # Source dataset (2,672 tickets)
-​```
+​...
+```
 ---
 
 ## Data Model
