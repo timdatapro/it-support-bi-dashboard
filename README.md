@@ -1,4 +1,4 @@
-# IT Support Analytics Dashboard — EdTech Company
+# IT Support Analytics Dashboard: EdTech Company
 
 📊 **Power BI Project** | Business Intelligence | IT Operations | EdTech Industry
 
@@ -8,14 +8,14 @@
 
 > *"Our IT support team is struggling to keep up with growing ticket volume across projects and departments. Manual reports are outdated by the time they reach us. We need a single dashboard to prioritize tickets correctly, monitor team performance, and identify recurring bottlenecks before they delay course launches."*
 >
-> — Head of IT Support, EdTech Company
+> -- Head of IT Support, EdTech Company
 
 The company faces a critical challenge: technical issues block employees from doing their jobs, causing delays in launching new courses and platform updates. Reports are built manually, take too long, and are stale by the time decisions need to be made.
 
 **The dashboard answers three core questions:**
-1. Where are the bottlenecks — which categories and departments generate the most unresolved tickets?
-2. Are we meeting our SLA and FCR targets — and who is falling behind?
-3. How is workload distributed across agents — and where do we need to rebalance?
+1. Where are the bottlenecks : which categories and departments generate the most unresolved tickets?
+2. Are we meeting our SLA and FCR targets : who is falling behind?
+3. How is workload distributed across agents : where do we need to rebalance?
 
 > **KPI Targets:** SLA Compliance ≥ 70% | First Contact Resolution ≥ 60%
 
@@ -56,27 +56,25 @@ James Carter handles the highest volume on the team at 417 tickets with 4 curren
 
 ## Key Features
 
-- **KPI Overview** — Total tickets, active tickets, avg and median resolution hours, SLA %, FCR %
-- **Trend Analysis** — Line charts for ticket volume, SLA compliance, and FCR with target reference lines and dynamic date granularity (Day / Month)
-- **Bottleneck Detection** — Interactive table (Departments / Agents / Categories) with conditional formatting on SLA and FCR; data bars on volume and resolution time
-- **Heat Map** — Ticket volume by hour of day x day of week to identify peak load windows
-- **Priority View** — Active tickets by priority (Critical / High / Medium / Low) with color-coded bars sorted correctly
-- **Active Tickets Table** — Filtered to open tickets only, sorted by creation date, with clean human-readable column names
-- **Slicers** — Filter the entire dashboard by Department, Agent, Priority, and Period
+- **KPI Overview**: Total tickets, active tickets, avg and median resolution hours, SLA %, FCR %
+- **Trend Analysis**: Line charts for ticket volume, SLA compliance, and FCR with target reference lines and dynamic date granularity (Day / Month)
+- **Bottleneck Detection**: Interactive table (Departments / Agents / Categories) with conditional formatting on SLA and FCR; data bars on volume and resolution time
+- **Heat Map**: Ticket volume by hour of day x day of week to identify peak load windows
+- **Priority View**: Active tickets by priority (Critical / High / Medium / Low) with color-coded bars sorted correctly
+- **Active Tickets Table**: Filtered to open tickets only, sorted by creation date, with clean human-readable column names
+- **Slicers**: Filter the entire dashboard by Department, Agent, Priority, and Period
 
 ---
 
 ## Design Decisions
 
-The final version addresses every point:
-
-**1. "Active tickets card is useful — but add a breakdown by status too"**
+**1. "Active tickets card is useful. Add a breakdown by status too"**
 The KPI card shows the combined active total (21). The active tickets table below is filtered exclusively to Open / In Progress / Waiting for Approval statuses and sorted by creation date, giving team leads an immediate action list without mixing in resolved or canceled tickets.
 
 **2. "Technical field names like `employee_department` should not be visible to users"**
 All column headers across every table are renamed to clean, human-readable labels: Agent, Department, Category, Status, Priority, Employee, Project, Created.
 
-**3. "Showing only average resolution hours can be misleading — add median too"**
+**3. "Showing only average resolution hours can be misleading. Add median too"**
 Both Avg Resolution Hours (22.1h) and Median Resolution Hours (22.0h) are shown as separate KPI cards side by side, allowing users to immediately spot distribution skew.
 
 **4. "SLA and FCR cards need trend context next to them"**
@@ -88,10 +86,10 @@ The Active Tickets by Priority bar chart shows only open tickets with correct so
 **6. "Departments / Agents / Categories should be one unified table, not separate charts"**
 A single interactive table with a bookmark switcher (Departments / Agents / Categories) shows all key metrics side by side: Active tickets, Total tickets, Avg resolution hours, SLA compliance %, FCR rate %. Conditional formatting highlights underperforming cells in red.
 
-**7. "Color logic should be consistent — red only for SLA/FCR violations, not open status"**
+**7. "Color logic should be consistent. Red only for SLA/FCR violations, not open status"**
 Red is used exclusively for below-target values: SLA below 70% and FCR below 60% in the table, and Critical priority in the bar chart. Open/active ticket status is shown in blue or amber to avoid false urgency.
 
-**8. "Peak load windows matter — show when and where bottlenecks occur by time"**
+**8. "Peak load windows matter. Show when and where bottlenecks occur by time"**
 A heat map matrix (Hour Bin x Weekday) with a green gradient immediately reveals Tuesday 9–11 AM as the highest-volume window across the entire week.
 
 ---
@@ -100,16 +98,16 @@ A heat map matrix (Hour Bin x Weekday) with a green gradient immediately reveals
 
 | KPI | Result | Target | Status |
 |---|---|---|---|
-| Total Tickets | 2,672 | — | — |
-| Active Tickets | 21 | — | — |
-| Avg Resolution Hours | 22.1h | — | — |
-| Median Resolution Hours | 22.0h | — | — |
+| Total Tickets | 2,672 | | |
+| Active Tickets | 21 | | |
+| Avg Resolution Hours | 22.1h | | |
+| Median Resolution Hours | 22.0h | | |
 | SLA Compliance % | 68.0% | ≥ 70% | ⚠️ Below target |
 | FCR % | 57.3% | ≥ 60% | ⚠️ Below target |
-| Resolution — Critical | ≤ 8h | tracked per ticket | — |
-| Resolution — High | ≤ 16h | tracked per ticket | — |
-| Resolution — Medium | ≤ 30h | tracked per ticket | — |
-| Resolution — Low | ≤ 50h | tracked per ticket | — |
+| Resolution: Critical | ≤ 8h | tracked per ticket | |
+| Resolution: High | ≤ 16h | tracked per ticket | |
+| Resolution: Medium | ≤ 30h | tracked per ticket | |
+| Resolution: Low | ≤ 50h | tracked per ticket | |
 
 ---
 
@@ -118,10 +116,10 @@ A heat map matrix (Hour Bin x Weekday) with a green gradient immediately reveals
 | Layer | Tool |
 |---|---|
 | Database | PostgreSQL (local) |
-| ETL | Python — `pandas`, `psycopg2` |
+| ETL | Python: `pandas`, `psycopg2` |
 | BI Platform | Power BI Desktop |
 | DAX Authoring | Tabular Editor 2 (C# scripts) |
-| Data Modeling | DAX — 28 measures in dedicated `_DAX` table |
+| Data Modeling | DAX: 28 measures in dedicated `_DAX` table |
 | Database Client | DBeaver |
 
 ---
@@ -148,8 +146,8 @@ it-support-bi-dashboard/
 The dashboard is powered by a single PostgreSQL table `public.support_tickets` with **2,672 tickets** covering Q3 2025 – Q1 2026.
 
 **Key schema decisions:**
-- `is_sla_breached` is NULL for active tickets — excluded from SLA % calculation automatically
-- `is_first_contact_resolution` is NOT NULL for all tickets — always included in FCR calculation
+- `is_sla_breached` is NULL for active tickets, excluded from SLA % calculation automatically
+- `is_first_contact_resolution` is NOT NULL for all tickets, always included in FCR calculation
 - `hours` = `closed_at - created_at` in hours, NULL for active tickets
 - `original_ticket_id` links repeat tickets for FCR tracking
 
