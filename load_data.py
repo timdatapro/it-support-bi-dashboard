@@ -16,7 +16,7 @@ DB_CONFIG = {
     "port":     5432,
     "dbname":   "edtech_support",
     "user":     "postgres",
-    "password": "postgres",
+    "password": "password",
 }
 
 XLSX_PATH = r"C:\Temp\support_tickets_en.xlsx"
